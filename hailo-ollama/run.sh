@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
-
-CONFIG_PATH=/data/options.json
+ONFIG_PATH=/data/options.json
 
 # Read HA config
 KEEP_ALIVE=$(jq -r '.keep_alive // "300m"' "$CONFIG_PATH" 2>/dev/null || echo "300m")
@@ -15,7 +14,7 @@ echo " Hailo LLM Add-on (Only hailo-ollama service)"
 echo "=========================================="
 echo "Keep Alive:        $KEEP_ALIVE"
 echo "Auto-download:     $AUTO_DOWNLOAD"
-echo "Service port:          8000 (hailo-ollama port)"
+echo "Service port:      8000 (hailo-ollama port)"
 echo "=========================================="
 
 echo ""
