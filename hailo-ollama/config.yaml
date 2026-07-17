@@ -2,7 +2,7 @@ name: "hailo-ollama"
 version: "1.0.0"	 
 slug: "hailo-ollama"	 
 description: "Hailo-10H NPU-accelerated Local LLM Service for Raspberry Pi 5 + AI HAT+ 2"
-url: "https://github.com/fatherqq/Hailo/hailo-ollama"	 
+url: "https://github.com/fatherqq/Hailo"	 
 arch:	 
   - aarch64	 
 startup: services	 
