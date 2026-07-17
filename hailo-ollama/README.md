@@ -11,5 +11,4 @@
 - Enter the repository URL https://github.com/sgeorgakis/hailo-ollama-hass and select Integration as the category, then confirm to add.
 - Find Hailo Ollama in the HACS integration list and click to download and install it.
 - After installation, restart Home Assistant to apply the integration.
-4. Complete the integration configuration:
 - Go to Settings → Devices & Services, click Add Integration, search for and select Hailo Ollama, then follow the on‑screen guide to complete the configuration parameters such as service connection and model selection.
