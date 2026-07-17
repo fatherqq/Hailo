@@ -1,0 +1,41 @@
+name: "hailo-ollama"	 
+version: "1.0.0"	 
+slug: "hailo-ollama"	 
+description: "Hailo-10H NPU-accelerated Local LLM Service for Raspberry Pi 5 + AI HAT+ 2"
+url: "https://github.com/fatherqq/Hailo/hailo-ollama"	 
+arch:	 
+  - aarch64	 
+startup: services	 
+boot: auto	 
+restart: always	 
+init: false	 
+ports:	 
+  8000/tcp: 8000
+devices:	 
+  - /dev/hailo0	 
+map:	 
+  - "media:rw"	 
+  - "addon_config:rw"	 
+  - "homeassistant_config:rw"	 
+  - "ssl"	 
+devices:
+  - "/dev/hailo0"	 
+full_access: false
+privileged:	 
+  - SYS_RAWIO	 
+apparmor: true 
+timeout: 300	 
+map:	 
+  - "media:rw"	 
+  - "addon_config:rw"	 
+  - "homeassistant_config:rw"	 
+  - "ssl"	 
+options:	 
+  keep_alive: "300m"	 
+  auto_download_model: false 
+schema:	 
+  keep_alive: str	 
+  auto_download_model: bool 
+environment:	 
+  OLLAMA_HOST: "0.0.0.0"	 
+  OLLAMA_PORT: "8000"
