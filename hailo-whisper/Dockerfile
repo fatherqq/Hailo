@@ -7,10 +7,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
-# 安装 HailoRT 驱动（将对应版本 deb 包放在项目根目录）
-# 示例文件名：hailort_5.3.0_amd64.deb，请替换为实际文件名
-COPY hailort_*.deb /tmp/
-RUN dpkg -i /tmp/hailort_*.deb && rm /tmp/hailort_*.deb
+# 安装 HailoRT 驱动
+COPY packages/ /tmp/packages/
+
+RUN dpkg -i /tmp/packages/hailort_5.2.0_arm64.deb || true \
+ && dpkg -i /tmp/packages/hailo_gen_ai_model_zoo_5.2.0_arm64.deb || true \
+ && apt-get update && apt-get install -f -y \
+ && ldconfig \
+ && rm -rf /tmp/packages /var/lib/apt/lists/*
 
 # 工作目录
 WORKDIR /opt/hailo-whisper
