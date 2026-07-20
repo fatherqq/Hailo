@@ -1,0 +1,47 @@
+name: "Hailo Whisper 语音识别"
+slug: "hailo-whisper"
+description: "基于 Hailo NPU 硬件加速的离线语音转写服务，兼容 Hailo-10H / 8 / 8L，支持硬件共享，可对接本地语音助手"
+version: "1.0.0"
+arch:
+  - amd64
+  - aarch64
+startup: application
+boot: auto
+init: false
+
+# 端口映射
+ports:
+  8001/tcp: 8001
+ports_description:
+  8001/tcp: "Whisper REST API 服务端口"
+
+# 硬件设备映射（Hailo 加速卡设备节点）
+devices:
+  - /dev/hailo0:/dev/hailo0:rwm
+  - /dev/h1x-0:/dev/h1x-0:rwm
+
+# 权限与目录映射
+privileged: false
+full_access: false
+udev: true
+map:
+  - media:rw
+  - share:rw
+
+# 环境变量
+environment:
+  TZ: "Asia/Shanghai"
+
+# 前端可配置项默认值
+options:
+  vdevice_group_id: "HAILO_SHARED"
+  model_auto_detect: true
+  custom_model: ""
+  language: "zh"
+
+# 配置项校验规则
+schema:
+  vdevice_group_id: str
+  model_auto_detect: bool
+  custom_model: str?
+  language: list(zh|en|auto)
