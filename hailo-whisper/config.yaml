@@ -5,7 +5,7 @@ description: >-
   以 REST API 形式提供 Whisper 推理，支持硬件自动识别、可选模型（tiny / base / tiny.en），
   模型首次使用自动下载并持久化保存到 /data，重启不丢失。
 url: "https://github.com/fatherqq/Hailo"
-version: "1.1.0"
+version: "1.0.0"
 arch:
   - aarch64
 startup: application
@@ -32,7 +32,7 @@ privileged:
   - SYS_RAWIO
 full_access: true
 apparmor: false
-udev: true
+# udev: true
 options:
   hw_arch: "auto"
   model_variant: "base"
