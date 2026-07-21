@@ -13,19 +13,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # 安装 HailoRT 驱动（需将对应架构的 deb 放入 packages/ 目录）
 # 支持 arm64（树莓派 5 等）与 amd64（x86 小主机），按构建目标架构优先匹配
 COPY packages/ /tmp/packages/
-ARG TARGETARCH
-RUN set -e; \
-    if [ -n "$(ls /tmp/packages/*.deb 2>/dev/null)" ]; then \
-      if [ "${TARGETARCH:-}" = "arm64" ]; then \
-        dpkg -i /tmp/packages/*_arm64.deb 2>/dev/null || dpkg -i /tmp/packages/*.deb || true; \
-      else \
-        dpkg -i /tmp/packages/*_amd64.deb 2>/dev/null || dpkg -i /tmp/packages/*.deb || true; \
-      fi; \
+ARG TARGETARCHp
+RUN dpkg -i /tmp/packages/hailort_5.2.0_arm64.deb || true \
+ && dpkg -i /tmp/packages/hailo_gen_ai_model_zoo_5.2.0_arm64.deb || true \
       apt-get update && apt-get install -f -y; \
       ldconfig; \
-    else \
-      echo "WARNING: packages/ 中未找到 HailoRT deb，请在构建前放入对应架构的安装包（详见 packages/README.md）"; \
-    fi
 
 WORKDIR /opt/hailo-whisper
 
