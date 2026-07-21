@@ -1,18 +1,31 @@
-name: "Hailo Whisper"
+name: "Hailo Whisper"	 
+version: "1.0.0"	 
 slug: "hailo-whisper"
-description: 基于 Hailo NPU（Hailo-8 / 8L / 10H）硬件加速的离线语音转写服务
-url: "https://github.com/fatherqq/Hailo"
-version: "1.0.0"
-arch:
-  - aarch64
-startup: services
-boot: auto
+description: "基于 Hailo NPU（Hailo-8 / 8L / 10H）硬件加速的离线语音转写服务"
+url: "https://github.com/fatherqq/Hailo"	 
+arch:	 
+  - aarch64	 
+startup: services	 
+boot: auto	 
 restart: always	 
-init: false
-
-# 对外端口
+init: false	 
 ports:
   10300/tcp: 10300
+devices:	 
+  - /dev/hailo0	 
+map:	 
+  - "media:rw"	 
+  - "addon_config:rw"
+full_access: false
+privileged:	 
+  - SYS_RAWIO	 
+apparmor: true 
+timeout: 300	 
+map:	 
+  - "media:rw"	 
+  - "addon_config:rw"	 
+  - "homeassistant_config:rw"	 
+  - "ssl"	 
 
 # Hailo 加速卡设备节点（需宿主机已加载 Hailo 内核驱动）
 devices:
