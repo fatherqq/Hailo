@@ -2,6 +2,7 @@ name: "Hailo Whisper"
 description: "Hailo Whisper model for HA addon"
 version: "1.0.0"
 slug: "hailo_whisper_addon"
+url: "https://github.com/fatherqq/Hailo"
 init: false
 arch:
   - aarch64
