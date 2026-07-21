@@ -21,9 +21,8 @@ ports_description:
 
 # Hailo 加速卡设备节点（需宿主机已加载 Hailo 内核驱动）
 devices:
-  - /dev/hailo0:/dev/hailo0:rwm
-  - /dev/h1x-0:/dev/h1x-0:rwm
-  - /dev/hailo10:/dev/hailo10:rwm
+  - /dev/hailo0
+  - /dev/h1x-0
 
 privileged:
   - SYS_RAWIO
