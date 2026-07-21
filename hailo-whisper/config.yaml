@@ -23,6 +23,11 @@ devices:
   - /dev/hailo0
   - /dev/h1x-0
 
+map:	 
+  - "media:rw"	 
+  - "addon_config:rw"	 
+  - "homeassistant_config:rw"	 
+  - "ssl"	
 privileged:
   - SYS_RAWIO
 full_access: true
