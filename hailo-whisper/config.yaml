@@ -19,7 +19,6 @@ ports:
 # Hailo 加速卡设备节点（需宿主机已加载 Hailo 内核驱动）
 devices:
   - /dev/hailo0
-  - /dev/h1x-0
 map:	 
   - "media:rw"	 
   - "addon_config:rw"	 
