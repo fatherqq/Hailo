@@ -8,7 +8,7 @@ url: "https://github.com/fatherqq/Hailo"
 version: "1.0.0"
 arch:
   - aarch64
-startup: application
+startup: services
 boot: auto
 restart: always	 
 init: false
