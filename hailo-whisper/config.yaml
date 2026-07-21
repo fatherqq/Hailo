@@ -28,9 +28,9 @@ options:
   vdevice_group_id: "HAILO_SHARED"
   multi_process_service: false
 schema:
-  hw_arch: select(auto|hailo8|hailo8l|hailo10h)
-  model_variant: select(base|tiny|tiny.en)
-  language: select(auto|zh|en)
+  hw_arch: list(auto|hailo8|hailo8l|hailo10h)
+  model_variant: list(base|tiny|tiny.en)
+  language: list(auto|zh|en)
   model_auto_download: bool
   vdevice_group_id: str
   multi_process_service: bool
