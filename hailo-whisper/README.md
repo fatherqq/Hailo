@@ -5,7 +5,7 @@
 
 - ✅ **硬件自动识别**：自动检测 `hailo8` / `hailo8l` / `hailo10h`（优先用 HailoRT 读取器件型号，回退到设备节点）。
 - ✅ **可选模型**：`base` / `tiny` / `tiny.en`（tiny.en 仅 10H 支持，会自动回退到可用变体）。
-- ✅ **模型自动下载 + 持久化**：首次启动按 `(硬件, 模型)` 组合从 Hailo 资源库下载 HEF 权重与 Token 嵌入文件，保存到 `/data/hailo-whisper/models`，**重启不丢失**，仅首次需要联网。
+- ✅ **模型自动下载 + 持久化**：首次启动按 `(硬件, 模型)` 组合从 Hailo 资源库下载 HEF 权重与 Token 嵌入文件，保存到 `/media/hailo/hailo-whispers`，**重启不丢失**，仅首次需要联网。
 - ✅ **REST + OpenAI 兼容接口**：`/transcribe` 与 `/v1/audio/transcriptions`，便于对接 Home Assistant 语音助手 / 自动化。
 
 ---
@@ -121,7 +121,7 @@ rest_command:
 └── hf/             # HuggingFace tokenizer 缓存
 ```
 
-重启加载项不会重新下载；如需清理空间，直接删除 `/data/hailo-whisper/models` 下对应目录，下次启动会自动重新下载。
+重启加载项不会重新下载；如需清理空间，直接删除 `/media/hailo/hailo-whispers` 下对应目录，下次启动会自动重新下载。
 
 ---
 
