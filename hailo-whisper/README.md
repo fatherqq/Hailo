@@ -114,7 +114,7 @@ rest_command:
 所有模型与 tokenizer 缓存均位于加载项持久存储：
 
 ```
-/data/hailo-whisper/models/
+/media/hailo/hailo-whisper/
 ├── hefs/            # HEF 权重（按硬件/变体分目录）
 │   ├── h8/  h8l/  h10h/
 ├── decoder_assets/ # Token 嵌入 .npy（按变体）
