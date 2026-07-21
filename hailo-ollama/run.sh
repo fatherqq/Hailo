@@ -27,8 +27,8 @@ which hailortcli && hailortcli scan 2>&1 || echo "  hailortcli unavailable"
 # ----------------------------------------------------------------------------
 # Persistent model core settings
 # ----------------------------------------------------------------------------
-export XDG_DATA_HOME=/media/hailo_llm
-MEDIA_BASE=/media/hailo_llm
+export XDG_DATA_HOME=/media/hailo
+MEDIA_BASE=/media/hailo
 BLOB_DIR="$XDG_DATA_HOME/hailo-ollama/models/blob"
 MANIFEST_DIR="$MEDIA_BASE/hailo-ollama/models/manifests"
 
