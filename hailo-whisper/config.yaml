@@ -1,6 +1,6 @@
 name: "Hailo Whisper"	 
 version: "1.0.0"	 
-slug: "hailo whisper"
+slug: "Hailo Whisper"
 description: "基于 Hailo NPU（Hailo-8 / 8L / 10H）硬件加速的离线语音转写服务"
 url: "https://github.com/fatherqq/Hailo"	 
 arch:	 
