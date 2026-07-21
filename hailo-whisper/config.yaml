@@ -19,25 +19,7 @@ map:
 full_access: false
 privileged:	 
   - SYS_RAWIO	 
-apparmor: true 
-timeout: 300	 
-map:	 
-  - "media:rw"	 
-  - "addon_config:rw"	 
-  - "homeassistant_config:rw"	 
-  - "ssl"	 
-
-# Hailo 加速卡设备节点（需宿主机已加载 Hailo 内核驱动）
-devices:
-  - /dev/hailo0
-map:	 
-  - "media:rw"	 
-  - "addon_config:rw"
-privileged:
-  - SYS_RAWIO
-full_access: true
-apparmor: false
-# udev: true
+apparmor: true
 options:
   hw_arch: "auto"
   model_variant: "base"
