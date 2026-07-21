@@ -36,7 +36,7 @@ mkdir -p "$HF_HOME"
 # ----------------------------------------------------------------------------
 # 修复 Hailo 设备权限（HA 容器环境必备）
 # ----------------------------------------------------------------------------
-for dev in /dev/hailo* /dev/h1x*; do
+for dev in /dev/hailo*; do
   if [ -e "$dev" ]; then
     chmod 666 "$dev" 2>/dev/null || true
     echo "已修复设备权限: $dev"
@@ -44,7 +44,7 @@ for dev in /dev/hailo* /dev/h1x*; do
 done
 udevadm trigger --subsystem-match=char 2>/dev/null || true
 
-if [ -e /dev/hailo0 ] || [ -e /dev/h1x-0 ] || [ -e /dev/hailo10 ]; then
+if [ -e /dev/hailo0 ]; then
     echo "✓ 检测到 Hailo 设备节点"
 else
     echo "⚠ 警告: 未检测到 Hailo 设备节点，请确认宿主机已加载 Hailo 内核驱动且 config.yaml 已正确映射设备"
