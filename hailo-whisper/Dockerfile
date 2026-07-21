@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY packages/ /tmp/packages/
 RUN dpkg -i /tmp/packages/hailort_5.2.0_arm64.deb || true \
  && dpkg -i /tmp/packages/hailo_gen_ai_model_zoo_5.2.0_arm64.deb || true \
- && apt-get update && apt-get install -f -y; \
+ && apt-get update && apt-get install -f -y \
  && ldconfig;
 
 WORKDIR /opt/hailo-whisper
