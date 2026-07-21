@@ -1,9 +1,6 @@
 name: "Hailo Whisper"
 slug: "hailo-whisper"
-description: >-
-  基于 Hailo NPU（Hailo-8 / 8L / 10H）硬件加速的离线语音转写服务。
-  以 REST API 形式提供 Whisper 推理，支持硬件自动识别、可选模型（tiny / base / tiny.en），
-  模型首次使用自动下载并持久化保存到 /data，重启不丢失。
+description: 基于 Hailo NPU（Hailo-8 / 8L / 10H）硬件加速的离线语音转写服务
 url: "https://github.com/fatherqq/Hailo"
 version: "1.0.0"
 arch:
