@@ -25,15 +25,15 @@ RUN set -e; \
       ldconfig; \
     else \
       echo "WARNING: packages/ 中未找到 HailoRT deb，请在构建前放入对应架构的安装包（详见 packages/README.md）"; \
-    fi;\
-    pip3 install /tmp/packages/hailort-5.2.0-cp311-cp311-linux_aarch64.whl\
-    rm -rf /tmp/packages /var/lib/apt/lists/*
+    fi
 
 WORKDIR /opt/hailo-whisper
 
 # Python 依赖
 COPY requirements.txt .
-RUN pip3 install --break-system-packages -r requirements.txt
+RUN pip3 install --break-system-packages -r requirements.txt;\
+    pip3 install /tmp/packages/hailort-5.2.0-cp311-cp311-linux_aarch64.whl;\
+    rm -rf /tmp/packages /var/lib/apt/lists/*
 
 # 业务代码（app 与 common 为同级包，便于 `from common.xxx` / `from app.xxx` 导入）
 COPY app ./app
