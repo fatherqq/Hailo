@@ -25,7 +25,7 @@ echo "=========================================="
 # ----------------------------------------------------------------------------
 # 模型持久化配置（保存到 HA 媒体目录 /media/hailo，重启不丢失，可在「媒体」中查看/备份）
 # ----------------------------------------------------------------------------
-export MODELS_DIR=/media/hailo
+export MODELS_DIR=/media/hailo/hailo-whisper
 mkdir -p "$MODELS_DIR"/hefs "$MODELS_DIR"/decoder_assets
 # HuggingFace tokenizer 缓存也持久化（首次下载后复用）
 export HF_HOME="$MODELS_DIR/hf"
