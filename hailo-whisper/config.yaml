@@ -10,6 +10,9 @@ ports:
   10300/tcp: 10300
 devices: ["/dev/hailo0"]
 udev: true
+map:	 
+  - "media:rw"	 
+  - "addon_config:rw"
 options:
   hw_arch: "auto"
   model_variant: "base"
