@@ -1,5 +1,5 @@
 name: "hailo-ollama"	 
-version: "1.0.0"	 
+version: "1.0.1"	 
 slug: "hailo-ollama"	 
 description: "Hailo-10H NPU-accelerated Local LLM Service for Raspberry Pi 5 + AI HAT+ 2"
 url: "https://github.com/fatherqq/Hailo"	 
@@ -15,19 +15,12 @@ devices:
   - /dev/hailo0	 
 map:	 
   - "media:rw"	 
-  - "addon_config:rw"	 
-  - "homeassistant_config:rw"	 
-  - "ssl"
+  - "addon_config:rw"
 full_access: false
 privileged:	 
   - SYS_RAWIO	 
 apparmor: true 
-timeout: 300	 
-map:	 
-  - "media:rw"	 
-  - "addon_config:rw"	 
-  - "homeassistant_config:rw"	 
-  - "ssl"	 
+timeout: 300
 options:	 
   keep_alive: "300m"	 
   auto_download_model: false 
