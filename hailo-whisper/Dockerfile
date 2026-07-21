@@ -17,15 +17,15 @@ ARG TARGETARCHp
 RUN dpkg -i /tmp/packages/hailort_5.2.0_arm64.deb || true \
  && dpkg -i /tmp/packages/hailo_gen_ai_model_zoo_5.2.0_arm64.deb || true \
  && apt-get update && apt-get install -f -y; \
-      ldconfig; \
+ && ldconfig;
 
 WORKDIR /opt/hailo-whisper
 
 # Python 依赖
 COPY requirements.txt .
 RUN pip3 install --break-system-packages -r requirements.txt \
-&& pip3 install /tmp/packages/hailort-5.2.0-cp311-cp311-linux_aarch64.whl;\
-    rm -rf /tmp/packages /var/lib/apt/lists/*
+&& pip3 install /tmp/packages/hailort-5.2.0-cp311-cp311-linux_aarch64.whl \
+&& rm -rf /tmp/packages /var/lib/apt/lists/*
 
 # 业务代码（app 与 common 为同级包，便于 `from common.xxx` / `from app.xxx` 导入）
 COPY app ./app
