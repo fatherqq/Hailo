@@ -15,14 +15,11 @@ init: false
 # 对外端口
 ports:
   10300/tcp: 10300
-ports_description:
-  10300/tcp: "Whisper REST API 端口"
 
 # Hailo 加速卡设备节点（需宿主机已加载 Hailo 内核驱动）
 devices:
   - /dev/hailo0
   - /dev/h1x-0
-
 map:	 
   - "media:rw"	 
   - "addon_config:rw"	 
