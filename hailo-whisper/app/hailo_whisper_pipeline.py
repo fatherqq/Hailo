@@ -38,7 +38,7 @@ class HailoWhisperPipeline:
 
     def _load_token_embedding_weight(self):
         """Load token embedding weights from the persistent model directory."""
-        models_dir = os.environ.get("MODELS_DIR", "/data/hailo-whisper/models")
+        models_dir = os.environ.get("MODELS_DIR", "/media/hailo")
         file_path = os.path.join(
             models_dir, "decoder_assets", self.variant, "decoder_tokenization",
             f"token_embedding_weight_{self.variant}.npy",
@@ -47,7 +47,7 @@ class HailoWhisperPipeline:
 
     def _load_onnx_add_input(self):
         """Load ONNX add input from the persistent model directory."""
-        models_dir = os.environ.get("MODELS_DIR", "/data/hailo-whisper/models")
+        models_dir = os.environ.get("MODELS_DIR", "/media/hailo")
         file_path = os.path.join(
             models_dir, "decoder_assets", self.variant, "decoder_tokenization",
             f"onnx_add_input_{self.variant}.npy",

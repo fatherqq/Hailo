@@ -1,7 +1,7 @@
 """Model downloader with persistent storage support.
 
 All HEF weights and decoder token-embedding assets are downloaded into
-``$MODELS_DIR`` (default ``/data/hailo-whisper/models`` inside the HA addon),
+``$MODELS_DIR`` (default ``/media/hailo`` inside the HA addon),
 so they survive container / addon restarts. On every start we only download
 what is missing, making the first boot the only one that needs network access.
 """
@@ -12,7 +12,7 @@ import subprocess
 
 logger = logging.getLogger(__name__)
 
-MODELS_DIR = os.environ.get("MODELS_DIR", "/data/hailo-whisper/models")
+MODELS_DIR = os.environ.get("MODELS_DIR", "/media/hailo")
 
 BASE_HEF = "https://hailo-csdata.s3.eu-west-2.amazonaws.com/resources/whisper"
 BASE_ASSETS = "https://hailo-csdata.s3.eu-west-2.amazonaws.com/resources/npy%20files/whisper/decoder_assets"

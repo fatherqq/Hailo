@@ -1,12 +1,12 @@
 """HEF file registry resolved against the persistent model directory.
 
-All paths are built from ``$MODELS_DIR`` (default ``/data/hailo-whisper/models``)
+All paths are built from ``$MODELS_DIR`` (default ``/media/hailo``)
 so the weights live in HA's persistent storage instead of the ephemeral image.
 """
 
 import os
 
-MODELS_DIR = os.environ.get("MODELS_DIR", "/data/hailo-whisper/models")
+MODELS_DIR = os.environ.get("MODELS_DIR", "/media/hailo")
 
 
 def _p(rel):

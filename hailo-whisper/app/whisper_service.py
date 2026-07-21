@@ -56,7 +56,7 @@ class WhisperService:
         if not ensure_models(detected, variant, auto_download):
             raise RuntimeError(
                 "模型文件缺失且无法下载，请检查网络或将模型放入持久化目录 "
-                f"{os.environ.get('MODELS_DIR', '/data/hailo-whisper/models')}"
+                f"{os.environ.get('MODELS_DIR', '/media/hailo')}"
             )
 
         enc = HEF_REGISTRY[variant][detected]["encoder"]

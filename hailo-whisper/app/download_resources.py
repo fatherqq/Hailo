@@ -5,7 +5,7 @@ Usage (from /opt/hailo-whisper):
     python3 -m app.download_resources --hw-arch hailo8 --variant base
     python3 -m app.download_resources            # hailo8 / base
 
-Models are stored under $MODELS_DIR (default /data/hailo-whisper/models) and
+Models are stored under $MODELS_DIR (default /media/hailo) and
 survive addon restarts.
 """
 import argparse
