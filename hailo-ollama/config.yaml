@@ -24,9 +24,11 @@ timeout: 300
 options:	 
   keep_alive: "300m"	 
   auto_download_model: false 
+  vdevice_group_id: "HAILO_SHARED"
 schema:	 
   keep_alive: str	 
   auto_download_model: bool 
+  vdevice_group_id: str
 environment:	 
   OLLAMA_HOST: "0.0.0.0"	 
   OLLAMA_PORT: "8000"
