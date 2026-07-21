@@ -1,0 +1,12 @@
+fastapi>=0.110.0
+uvicorn[standard]>=0.27.0
+python-multipart>=0.0.9
+soundfile>=0.12.1
+numpy>=1.26.0
+pydub>=0.25.1
+transformers>=4.38.0
+torch>=2.2.0
+# 以下两个仅用于 app.app_hailo_whisper 命令行录音演示，REST 服务不依赖
+sounddevice>=0.4.6
+scipy>=1.11.0
+# hailort Python 绑定随 HailoRT deb 包安装，无需单独 pip 安装

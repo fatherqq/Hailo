@@ -1,0 +1,46 @@
+FROM debian:bookworm-slim
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    LANG=C.UTF-8 LC_ALL=C.UTF-8
+
+# 基础系统依赖
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 python3-pip python3-venv \
+    jq curl wget udev ffmpeg libsndfile1 ca-certificates \
+    libusb-1.0-0 libstdc++6 pciutils \
+    && rm -rf /var/lib/apt/lists/*
+
+# 安装 HailoRT 驱动（需将对应架构的 deb 放入 packages/ 目录）
+# 支持 arm64（树莓派 5 等）与 amd64（x86 小主机），按构建目标架构优先匹配
+COPY packages/ /tmp/packages/
+ARG TARGETARCH
+RUN set -e; \
+    if [ -n "$(ls /tmp/packages/*.deb 2>/dev/null)" ]; then \
+      if [ "${TARGETARCH:-}" = "arm64" ]; then \
+        dpkg -i /tmp/packages/*_arm64.deb 2>/dev/null || dpkg -i /tmp/packages/*.deb || true; \
+      else \
+        dpkg -i /tmp/packages/*_amd64.deb 2>/dev/null || dpkg -i /tmp/packages/*.deb || true; \
+      fi; \
+      apt-get update && apt-get install -f -y; \
+      ldconfig; \
+    else \
+      echo "WARNING: packages/ 中未找到 HailoRT deb，请在构建前放入对应架构的安装包（详见 packages/README.md）"; \
+    fi; \
+    rm -rf /tmp/packages /var/lib/apt/lists/*
+
+WORKDIR /opt/hailo-whisper
+
+# Python 依赖
+COPY requirements.txt .
+RUN pip3 install --break-system-packages -r requirements.txt
+
+# 业务代码（app 与 common 为同级包，便于 `from common.xxx` / `from app.xxx` 导入）
+COPY app ./app
+COPY common ./common
+
+# 启动脚本
+COPY run.sh /run.sh
+RUN chmod +x /run.sh
+
+EXPOSE 10300
+CMD ["/run.sh"]

@@ -1,0 +1,46 @@
+name: "Hailo Whisper"
+slug: "hailo-whisper"
+description: >-
+  基于 Hailo NPU（Hailo-8 / 8L / 10H）硬件加速的离线语音转写服务。
+  以 REST API 形式提供 Whisper 推理，支持硬件自动识别、可选模型（tiny / base / tiny.en），
+  模型首次使用自动下载并持久化保存到 /data，重启不丢失。
+url: "https://github.com/fatherqq/Hailo"
+version: "1.1.0"
+arch:
+  - aarch64
+  - amd64
+startup: application
+boot: manual
+init: false
+
+# 对外端口
+ports:
+  10300/tcp: 10300
+ports_description:
+  10300/tcp: "Whisper REST API 端口"
+
+# Hailo 加速卡设备节点（需宿主机已加载 Hailo 内核驱动）
+devices:
+  - /dev/hailo0:/dev/hailo0:rwm
+  - /dev/h1x-0:/dev/h1x-0:rwm
+  - /dev/hailo10:/dev/hailo10:rwm
+
+privileged:
+  - SYS_RAWIO
+full_access: true
+apparmor: false
+udev: true
+options:
+  hw_arch: "auto"
+  model_variant: "base"
+  language: "auto"
+  model_auto_download: true
+  vdevice_group_id: "HAILO_SHARED"
+  multi_process_service: false
+schema:
+  hw_arch: select(auto|hailo8|hailo8l|hailo10h)
+  model_variant: select(base|tiny|tiny.en)
+  language: select(auto|zh|en)
+  model_auto_download: bool
+  vdevice_group_id: str
+  multi_process_service: bool
