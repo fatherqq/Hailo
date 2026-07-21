@@ -9,7 +9,8 @@ version: "1.0.0"
 arch:
   - aarch64
 startup: application
-boot: manual
+boot: auto
+restart: always	 
 init: false
 
 # 对外端口
@@ -21,9 +22,7 @@ devices:
   - /dev/hailo0
 map:	 
   - "media:rw"	 
-  - "addon_config:rw"	 
-  - "homeassistant_config:rw"	 
-  - "ssl"	
+  - "addon_config:rw"
 privileged:
   - SYS_RAWIO
 full_access: true
