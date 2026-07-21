@@ -5,6 +5,7 @@ ONFIG_PATH=/data/options.json
 # Read HA config
 KEEP_ALIVE=$(jq -r '.keep_alive // "300m"' "$CONFIG_PATH" 2>/dev/null || echo "300m")
 AUTO_DOWNLOAD=$(jq -r '.auto_download_model // false' "$CONFIG_PATH" 2>/dev/null || echo "false")
+VDEVICE_GROUP_ID=$(jq -r '.vdevice_group_id // "HAILO_SHARED"' "$CONFIG_PATH" 2>/dev/null || echo "HAILO_SHARED")
 
 export OLLAMA_KEEP_ALIVE="$KEEP_ALIVE"
 export AUTO_DOWNLOAD_MODEL="$AUTO_DOWNLOAD"
@@ -84,8 +85,8 @@ fi
 # Start hailo-ollama core service (native port 8000)
 # ----------------------------------------------------------------------------
 export OLLAMA_HOST=0.0.0.0:8000
-export HAILO_OLLAMA_VDEVICE_GROUP_ID=HAILO_OLLAMA_SHARED
-export HAILO_VDEVICE_GROUP_ID=HAILO_OLLAMA_SHARED
+export HAILO_OLLAMA_VDEVICE_GROUP_ID="$VDEVICE_GROUP_ID"
+export HAILO_VDEVICE_GROUP_ID="$VDEVICE_GROUP_ID"
 
 echo "Starting hailo-ollama service, listening on $OLLAMA_HOST ..."
 
