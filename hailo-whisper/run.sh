@@ -59,6 +59,7 @@ export HW_ARCH_OVERRIDE="$HW_ARCH"
 export MODEL_VARIANT="$MODEL_VARIANT"
 export MODEL_AUTO_DOWNLOAD="$MODEL_AUTO_DOWNLOAD"
 export MULTI_PROCESS_SERVICE="$MULTI_PROCESS"
+export HF_ENDPOINT="https://hf-mirror.com"
 
 echo "正在启动 Whisper 服务（首次启动会自动下载模型，请耐心等待）..."
 
