@@ -64,7 +64,7 @@ def info():
         "variant": service.variant,
         "ready": service.ready,
         "language": os.environ.get("DEFAULT_LANGUAGE", "auto"),
-        "models_dir": os.environ.get("MODELS_DIR", "/media/hailo"),
+        "models_dir": os.environ.get("MODELS_DIR", "/media/hailo/hailo-whisper"),
     }
 
 
@@ -73,7 +73,7 @@ def models():
     from app.model_manager import list_models
     return {
         "models": list_models(),
-        "models_dir": os.environ.get("MODELS_DIR", "/media/hailo"),
+        "models_dir": os.environ.get("MODELS_DIR", "/media/hailo/hailo-whisper"),
     }
 
 
